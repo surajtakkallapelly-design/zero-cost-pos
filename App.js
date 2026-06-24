@@ -8,7 +8,6 @@ import {
   ScrollView,
   FlatList,
   Modal,
-  SafeAreaView,
   ActivityIndicator,
   Alert,
   Linking,
@@ -19,6 +18,8 @@ import {
   Platform,
   Image,
 } from 'react-native';
+import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
+import { StatusBar } from 'expo-status-bar';
 import { createClient } from '@supabase/supabase-js';
 import { Ionicons } from '@expo/vector-icons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -30,7 +31,14 @@ import * as ImagePicker from 'expo-image-picker';
 // ==========================================
 const SUPABASE_URL = 'https://wpdtgcotwyytwhzxeizi.supabase.co';
 const SUPABASE_ANON_KEY = 'sb_publishable_cUNNwOuniRr8dKoINeKiuQ_ac5HHxRM';
-const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY, {
+  auth: {
+    storage: AsyncStorage,
+    autoRefreshToken: true,
+    persistSession: true,
+    detectSessionInUrl: false,
+  },
+});
 
 // Default mock products catalog with valid UUID keys to comply with database integrity
 const CATALOG_PRODUCTS = [
@@ -177,53 +185,54 @@ export default function App() {
   }
 
   return (
-    <SafeAreaView style={styles.appContainer}>
-      <View style={styles.contentArea}>
-        {activeTab === 'billing' && <BillingTab />}
-        {activeTab === 'transactions' && <TransactionsTab session={session} />}
-        {activeTab === 'stats' && <StatsTab session={session} />}
-        {activeTab === 'profile' && <ProfileTab session={session} onLogout={handleLogout} />}
-      </View>
+    <SafeAreaProvider>
+      <StatusBar style="dark" backgroundColor="#ffffff" />
+      <SafeAreaView style={styles.appContainer} edges={['top', 'left', 'right']}>
+        <View style={styles.contentArea}>
+          {activeTab === 'billing' && <BillingTab />}
+          {activeTab === 'transactions' && <TransactionsTab session={session} />}
+          {activeTab === 'stats' && <StatsTab session={session} />}
+          {activeTab === 'profile' && <ProfileTab session={session} onLogout={handleLogout} />}
+        </View>
 
-      {/* Tab Navigation Bar */}
-      <View style={styles.tabBar}>
-        <TouchableOpacity
-          style={[styles.tabItem, activeTab === 'billing' && styles.tabItemActive]}
-          onTap={() => setActiveTab('billing')}
-          onPress={() => setActiveTab('billing')}
-        >
-          <Ionicons name="cart" size={24} color={activeTab === 'billing' ? '#2563EB' : '#64748B'} />
-          <Text style={[styles.tabLabel, activeTab === 'billing' && styles.tabLabelActive]}>Billing</Text>
-        </TouchableOpacity>
+        {/* Tab Navigation Bar */}
+        <SafeAreaView edges={['bottom']} style={{ backgroundColor: '#ffffff' }}>
+          <View style={styles.tabBar}>
+            <TouchableOpacity
+              style={[styles.tabItem, activeTab === 'billing' && styles.tabItemActive]}
+              onPress={() => setActiveTab('billing')}
+            >
+              <Ionicons name="cart" size={24} color={activeTab === 'billing' ? '#2563EB' : '#64748B'} />
+              <Text style={[styles.tabLabel, activeTab === 'billing' && styles.tabLabelActive]}>Billing</Text>
+            </TouchableOpacity>
 
-        <TouchableOpacity
-          style={[styles.tabItem, activeTab === 'transactions' && styles.tabItemActive]}
-          onTap={() => setActiveTab('transactions')}
-          onPress={() => setActiveTab('transactions')}
-        >
-          <Ionicons name="receipt" size={24} color={activeTab === 'transactions' ? '#2563EB' : '#64748B'} />
-          <Text style={[styles.tabLabel, activeTab === 'transactions' && styles.tabLabelActive]}>Log</Text>
-        </TouchableOpacity>
+            <TouchableOpacity
+              style={[styles.tabItem, activeTab === 'transactions' && styles.tabItemActive]}
+              onPress={() => setActiveTab('transactions')}
+            >
+              <Ionicons name="receipt" size={24} color={activeTab === 'transactions' ? '#2563EB' : '#64748B'} />
+              <Text style={[styles.tabLabel, activeTab === 'transactions' && styles.tabLabelActive]}>Log</Text>
+            </TouchableOpacity>
 
-        <TouchableOpacity
-          style={[styles.tabItem, activeTab === 'stats' && styles.tabItemActive]}
-          onTap={() => setActiveTab('stats')}
-          onPress={() => setActiveTab('stats')}
-        >
-          <Ionicons name="analytics" size={24} color={activeTab === 'stats' ? '#2563EB' : '#64748B'} />
-          <Text style={[styles.tabLabel, activeTab === 'stats' && styles.tabLabelActive]}>Stats</Text>
-        </TouchableOpacity>
+            <TouchableOpacity
+              style={[styles.tabItem, activeTab === 'stats' && styles.tabItemActive]}
+              onPress={() => setActiveTab('stats')}
+            >
+              <Ionicons name="analytics" size={24} color={activeTab === 'stats' ? '#2563EB' : '#64748B'} />
+              <Text style={[styles.tabLabel, activeTab === 'stats' && styles.tabLabelActive]}>Stats</Text>
+            </TouchableOpacity>
 
-        <TouchableOpacity
-          style={[styles.tabItem, activeTab === 'profile' && styles.tabItemActive]}
-          onTap={() => setActiveTab('profile')}
-          onPress={() => setActiveTab('profile')}
-        >
-          <Ionicons name="person" size={24} color={activeTab === 'profile' ? '#2563EB' : '#64748B'} />
-          <Text style={[styles.tabLabel, activeTab === 'profile' && styles.tabLabelActive]}>Profile</Text>
-        </TouchableOpacity>
-      </View>
-    </SafeAreaView>
+            <TouchableOpacity
+              style={[styles.tabItem, activeTab === 'profile' && styles.tabItemActive]}
+              onPress={() => setActiveTab('profile')}
+            >
+              <Ionicons name="person" size={24} color={activeTab === 'profile' ? '#2563EB' : '#64748B'} />
+              <Text style={[styles.tabLabel, activeTab === 'profile' && styles.tabLabelActive]}>Profile</Text>
+            </TouchableOpacity>
+          </View>
+        </SafeAreaView>
+      </SafeAreaView>
+    </SafeAreaProvider>
   );
 }
 
@@ -272,8 +281,10 @@ function LoginView({ onBypass }) {
   };
 
   return (
-    <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-      <SafeAreaView style={styles.loginContainer}>
+    <SafeAreaProvider>
+      <StatusBar style="dark" backgroundColor="#f0f4ff" />
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+      <SafeAreaView style={styles.loginContainer} edges={['top','bottom','left','right']}>
         <View style={styles.loginCard}>
           <Ionicons name="calculator-outline" size={72} color="#2563EB" style={styles.loginLogo} />
           <Text style={styles.loginTitle}>PAPERLESS POS</Text>
@@ -337,7 +348,8 @@ function LoginView({ onBypass }) {
           </TouchableOpacity>
         </View>
       </SafeAreaView>
-    </TouchableWithoutFeedback>
+      </TouchableWithoutFeedback>
+    </SafeAreaProvider>
   );
 }
 
@@ -953,7 +965,7 @@ function BillingTab() {
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
           <View style={styles.modalBg}>
             <KeyboardAvoidingView
-              behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+              behavior="padding"
               style={{ width: '100%', alignItems: 'center' }}
             >
               <View style={styles.modalContainer}>
@@ -1153,7 +1165,7 @@ function BillingTab() {
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
           <View style={styles.modalBg}>
             <KeyboardAvoidingView
-              behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+              behavior="padding"
               style={{ flex: 1, width: '100%', justifyContent: 'center', alignItems: 'center' }}
             >
               <SafeAreaView style={styles.settingsModalContainer}>
@@ -1463,7 +1475,7 @@ function BillingTab() {
       <Modal visible={checkoutStep > 0} animationType="slide" transparent>
         <View style={styles.modalBg}>
           <KeyboardAvoidingView
-            behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+            behavior="padding"
             style={{ width: '100%', position: 'absolute', bottom: 0 }}
           >
             <View style={[
@@ -1871,7 +1883,7 @@ function TransactionsTab({ session }) {
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
           <View style={styles.modalBg}>
             <KeyboardAvoidingView
-              behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+              behavior="padding"
               style={{ width: '100%', position: 'absolute', bottom: 0 }}
             >
               <View style={styles.editPanelContainer}>

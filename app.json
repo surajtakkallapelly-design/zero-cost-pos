@@ -2,7 +2,7 @@
   "expo": {
     "name": "Zero Cost POS",
     "slug": "zero-cost-pos",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "orientation": "portrait",
     "userInterfaceStyle": "light",
     "ios": {
@@ -11,6 +11,16 @@
     },
     "android": {
       "package": "com.suraj.zerocostpos",
+      "softwareKeyboardLayoutMode": "pan",
+      "statusBar": {
+        "backgroundColor": "#ffffff",
+        "barStyle": "dark-content",
+        "translucent": false
+      },
+      "navigationBar": {
+        "visible": "leanback",
+        "backgroundColor": "#ffffff"
+      },
       "permissions": [
         "android.permission.RECORD_AUDIO"
       ]
