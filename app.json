@@ -10,7 +10,10 @@
       "bundleIdentifier": "com.suraj.zerocostpos"
     },
     "android": {
-      "package": "com.suraj.zerocostpos"
+      "package": "com.suraj.zerocostpos",
+      "permissions": [
+        "android.permission.RECORD_AUDIO"
+      ]
     },
     "plugins": [
       [
@@ -20,6 +23,12 @@
           "cameraPermission": "The app accesses your camera to take product pictures."
         }
       ]
-    ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "1a2cc886-137d-46b9-a646-3c90f0f5ebb9"
+      }
+    },
+    "owner": "surajtakkallapelly"
   }
 }
