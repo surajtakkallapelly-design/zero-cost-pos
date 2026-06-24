@@ -1,0 +1,25 @@
+{
+  "expo": {
+    "name": "Zero Cost POS",
+    "slug": "zero-cost-pos",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.suraj.zerocostpos"
+    },
+    "android": {
+      "package": "com.suraj.zerocostpos"
+    },
+    "plugins": [
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "The app accesses your photos to select product images and UPI QR codes.",
+          "cameraPermission": "The app accesses your camera to take product pictures."
+        }
+      ]
+    ]
+  }
+}
