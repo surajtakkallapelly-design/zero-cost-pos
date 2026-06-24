@@ -5,6 +5,15 @@
     "version": "1.0.1",
     "orientation": "portrait",
     "userInterfaceStyle": "light",
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/1a2cc886-137d-46b9-a646-3c90f0f5ebb9",
+      "enabled": true,
+      "checkAutomatically": "ON_LOAD",
+      "fallbackToCacheTimeout": 0
+    },
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.suraj.zerocostpos"
@@ -26,6 +35,7 @@
       ]
     },
     "plugins": [
+      "expo-updates",
       [
         "expo-image-picker",
         {

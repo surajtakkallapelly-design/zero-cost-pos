@@ -13,6 +13,7 @@
     "expo": "~54.0.0",
     "expo-image-picker": "~17.0.11",
     "expo-linking": "~8.0.12",
+    "expo-updates": "~29.0.18",
     "pretty-format": "^30.4.1",
     "react": "19.1.0",
     "react-native": "0.81.5",
