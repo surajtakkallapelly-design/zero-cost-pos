@@ -676,7 +676,7 @@ function BillingTab() {
     const amount = getGrandTotal().toFixed(2);
     const mode = selectedPaymentMode;
     const shop = "MRCB Restaurant";
-    const receiptLink = `https://raw.githack.com/surajtakkallapelly-design/zero-cost-pos/main/invoice.html?num=${encodeURIComponent(invoiceNum)}`;
+    const receiptLink = `https://surajtakkallapelly-design.github.io/zero-cost-pos/invoice.html?num=${encodeURIComponent(invoiceNum)}`;
 
     const text = `👉 *INVOICE FROM ${shop}*\n\n` +
       `Your total bill is *₹${amount}* paid via *${mode}*. ` +
