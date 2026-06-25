@@ -27,7 +27,6 @@
         "translucent": false
       },
       "navigationBar": {
-        "visible": "leanback",
         "backgroundColor": "#ffffff"
       },
       "permissions": [
