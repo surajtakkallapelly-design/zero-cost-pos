@@ -1367,9 +1367,8 @@ function BillingTab() {
                       </TouchableOpacity>
                     </View>
 
-                    <ScrollView contentContainerStyle={{ paddingBottom: 40 }}>
-                      {/* TAB 1: UPI QR CODE */}
-                      {settingsTab === 'qr' && (
+                    {settingsTab === 'qr' ? (
+                      <ScrollView contentContainerStyle={{ paddingBottom: 40 }}>
                         <View style={[styles.qrSettingsContent, { padding: 16 }]}>
                           <Text style={styles.qrSettingsPrompt}>
                             Upload your personal UPI QR code image from gallery. This will show on the checkout screen when a customer selects UPI.
@@ -1397,11 +1396,13 @@ function BillingTab() {
                             </View>
                           )}
                         </View>
-                      )}
-
-                      {/* TAB 2: MANAGE MENU */}
-                      {settingsTab === 'menu' && (
-                        <View style={{ padding: 16 }}>
+                      </ScrollView>
+                    ) : (
+                      <FlatList
+                        data={catalog}
+                        keyExtractor={(item) => item.id}
+                        contentContainerStyle={{ paddingHorizontal: 16, paddingTop: 16, paddingBottom: 40 }}
+                        ListHeaderComponent={
                           <View style={styles.menuManageHeader}>
                             <Text style={styles.menuSectionTitle}>Menu Items ({catalog.length})</Text>
                             <TouchableOpacity
@@ -1420,28 +1421,26 @@ function BillingTab() {
                               <Text style={styles.menuAddBtnText}>Add Item</Text>
                             </TouchableOpacity>
                           </View>
-
-                          {/* List of items */}
-                          {catalog.map((prod) => (
-                            <View key={prod.id} style={styles.menuItemRow}>
-                              <Image source={{ uri: prod.image }} style={styles.menuItemThumb} />
-                              <View style={{ flex: 1, marginRight: 8 }}>
-                                <Text style={styles.menuItemName}>{prod.name}</Text>
-                                <Text style={styles.menuItemCategory}>{prod.category} | ₹{prod.price}</Text>
-                              </View>
-                              <View style={styles.menuItemActions}>
-                                <TouchableOpacity style={styles.menuEditAction} onPress={() => startEditCatalogProduct(prod)}>
-                                  <Ionicons name="create-outline" size={20} color="#2563EB" />
-                                </TouchableOpacity>
-                                <TouchableOpacity style={styles.menuDeleteAction} onPress={() => handleDeleteCatalogProduct(prod.id, prod.name)}>
-                                  <Ionicons name="trash-outline" size={20} color="#FF6B6B" />
-                                </TouchableOpacity>
-                              </View>
+                        }
+                        renderItem={({ item: prod }) => (
+                          <View style={styles.menuItemRow}>
+                            <Image source={{ uri: prod.image }} style={styles.menuItemThumb} />
+                            <View style={{ flex: 1, marginRight: 8 }}>
+                              <Text style={styles.menuItemName}>{prod.name}</Text>
+                              <Text style={styles.menuItemCategory}>{prod.category} | ₹{prod.price}</Text>
                             </View>
-                          ))}
-                        </View>
-                      )}
-                    </ScrollView>
+                            <View style={styles.menuItemActions}>
+                              <TouchableOpacity style={styles.menuEditAction} onPress={() => startEditCatalogProduct(prod)}>
+                                <Ionicons name="create-outline" size={20} color="#2563EB" />
+                              </TouchableOpacity>
+                              <TouchableOpacity style={styles.menuDeleteAction} onPress={() => handleDeleteCatalogProduct(prod.id, prod.name)}>
+                                <Ionicons name="trash-outline" size={20} color="#FF6B6B" />
+                              </TouchableOpacity>
+                            </View>
+                          </View>
+                        )}
+                      />
+                    )}
                   </>
                 )}
               </SafeAreaView>
