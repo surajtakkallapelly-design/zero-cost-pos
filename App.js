@@ -17,6 +17,7 @@ import {
   KeyboardAvoidingView,
   Platform,
   Image,
+  BackHandler,
 } from 'react-native';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import { StatusBar } from 'expo-status-bar';
@@ -393,6 +394,26 @@ function BillingTab() {
 
   const [showQrSettings, setShowQrSettings] = useState(false); // fallback compatibility
   const [customQrUri, setCustomQrUri] = useState(null);
+
+  // Android back button handler
+  useEffect(() => {
+    const onBackPress = () => {
+      if (showCustomModal) { setShowCustomModal(false); return true; }
+      if (showSettingsModal) { setShowSettingsModal(false); return true; }
+      if (showBillReview) { setShowBillReview(false); return true; }
+      if (checkoutStep > 0) {
+        if (checkoutStep === 3 && selectedPaymentMode !== 'UPI') {
+          setCheckoutStep(1);
+        } else {
+          setCheckoutStep(checkoutStep - 1);
+        }
+        return true;
+      }
+      return false; // let system handle (exit app)
+    };
+    const sub = BackHandler.addEventListener('hardwareBackPress', onBackPress);
+    return () => sub.remove();
+  }, [checkoutStep, showCustomModal, showSettingsModal, showBillReview, selectedPaymentMode]);
 
   // Load custom QR and Catalog Menu configuration on mount
   useEffect(() => {
