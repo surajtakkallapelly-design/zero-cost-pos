@@ -728,7 +728,7 @@ function BillingTab() {
       const lineTotal = item.price * item.quantity;
       const gst = lineTotal - (lineTotal / (1 + (item.gst / 100)));
       return {
-        product_id: item.id.includes('ad-hoc') ? null : item.id,
+        product_id: null, // products table FK not used; all info stored in product_name
         product_name: item.name,
         unit_price: item.price,
         quantity: item.quantity,
