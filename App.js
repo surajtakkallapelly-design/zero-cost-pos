@@ -41,120 +41,78 @@ const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY, {
   },
 });
 
-// Default mock products catalog with valid UUID keys to comply with database integrity
+// MRCB Restaurant Menu
 const CATALOG_PRODUCTS = [
-  {
-    id: 'e23652c4-3310-4c40-9a2c-d9c9b1399e51',
-    name: 'Chicken Biryani',
-    category: 'Biryani',
-    price: 280.00,
-    gst: 18.0,
-    description: 'Aged basmati rice cooked with succulent chicken and aromatic spices.',
-    image: 'https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?q=80&w=300&auto=format&fit=crop',
-    tag: 'Bestseller',
-    type: 'nonveg'
-  },
-  {
-    id: 'f2c8d203-d68a-49a3-a75e-dc886a117b43',
-    name: 'Mutton Biryani',
-    category: 'Biryani',
-    price: 350.00,
-    gst: 18.0,
-    description: 'Traditional slow-cooked mutton biryani packed with rich flavors.',
-    image: 'https://images.unsplash.com/photo-1633945274405-b6c8069047b0?q=80&w=300&auto=format&fit=crop',
-    tag: 'Chef Choice',
-    type: 'nonveg'
-  },
-  {
-    id: 'd17bf25e-38aa-4629-87a4-8457639f7278',
-    name: 'Butter Chicken',
-    category: 'Curry',
-    price: 260.00,
-    gst: 18.0,
-    description: 'Tender chicken tikka cooked in rich creamy tomato butter gravy.',
-    image: 'https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?q=80&w=300&auto=format&fit=crop',
-    tag: 'Bestseller',
-    type: 'nonveg'
-  },
-  {
-    id: 'a854d924-f7b7-4e36-93d3-98246a482b61',
-    name: 'Paneer Butter Masala',
-    category: 'Curry',
-    price: 220.00,
-    gst: 18.0,
-    description: 'Cottage cheese cubes simmered in a mildly spiced onion-tomato-cashew gravy.',
-    image: 'https://images.unsplash.com/photo-1565557623262-b51c2513a641?q=80&w=300&auto=format&fit=crop',
-    tag: 'Popular',
-    type: 'veg'
-  },
-  {
-    id: 'c938a906-88b6-4b68-98e9-4e78a63bbcd3',
-    name: 'Chicken Fry',
-    category: 'Fry',
-    price: 240.00,
-    gst: 18.0,
-    description: 'Spicy and crispy pan-fried chicken seasoned with Indian herbs.',
-    image: 'https://images.unsplash.com/photo-1569058242253-92a9c755a0ec?q=80&w=300&auto=format&fit=crop',
-    tag: 'Crispy',
-    type: 'nonveg'
-  },
-  {
-    id: 'b17bf25e-38aa-4629-87a4-8457639f7289',
-    name: 'Gobi 65',
-    category: 'Fry',
-    price: 160.00,
-    gst: 18.0,
-    description: 'Crispy deep-fried cauliflower florets marinated with spices.',
-    image: 'https://images.unsplash.com/photo-1613292443284-8d10ef9383fe?q=80&w=300&auto=format&fit=crop',
-    tag: 'Star Item',
-    type: 'veg'
-  },
-  {
-    id: 'b2c8d203-d68a-49a3-a75e-dc886a117b54',
-    name: 'Veg Fried Rice',
-    category: 'Rice & Noodles',
-    price: 180.00,
-    gst: 18.0,
-    description: 'Stir-fried rice with assorted vegetables and seasoning.',
-    image: 'https://images.unsplash.com/photo-1512058564366-18510be2db19?q=80&w=300&auto=format&fit=crop',
-    tag: 'Fast Seller',
-    type: 'veg'
-  },
-  {
-    id: 'b354d924-f7b7-4e36-93d3-98246a482b72',
-    name: 'Gulab Jamun (2pcs)',
-    category: 'Dessert',
-    price: 80.00,
-    gst: 18.0,
-    description: 'Warm berry-sized milk dumplings soaked in sweet rose cardamom syrup.',
-    image: 'https://images.unsplash.com/photo-1589301760014-d929f3979dbc?q=80&w=300&auto=format&fit=crop',
-    tag: 'Sweet Treat',
-    type: 'veg'
-  },
-  {
-    id: 'b438a906-88b6-4b68-98e9-4e78a63bbce4',
-    name: 'Fresh Lime Soda',
-    category: 'Drinks',
-    price: 60.00,
-    gst: 18.0,
-    description: 'Bubbly fresh lime beverage served sweet or salted.',
-    image: 'https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?q=80&w=300&auto=format&fit=crop',
-    tag: 'Thirst Quencher',
-    type: 'veg'
-  },
-  {
-    id: 'b538a906-88b6-4b68-98e9-4e78a63bbce5',
-    name: 'Masala Chai',
-    category: 'Drinks',
-    price: 30.00,
-    gst: 18.0,
-    description: 'Spiced Indian milk tea brewed with ginger and cardamom.',
-    image: 'https://images.unsplash.com/photo-1576092768241-dec231879fc3?q=80&w=300&auto=format&fit=crop',
-    tag: 'Hot Beverage',
-    type: 'veg'
-  }
+  // BIRYANI
+  { id: 'mrcb-001', name: 'Chicken Dum Biryani (S)', category: 'Biryani', price: 150, gst: 5, description: 'Single 125g', image: 'https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?q=80&w=300&auto=format&fit=crop', tag: 'Bestseller', type: 'nonveg' },
+  { id: 'mrcb-002', name: 'Chicken Dum Biryani (F)', category: 'Biryani', price: 280, gst: 5, description: 'Full 250g', image: 'https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?q=80&w=300&auto=format&fit=crop', tag: '', type: 'nonveg' },
+  { id: 'mrcb-003', name: 'Chicken Family Pack', category: 'Biryani', price: 600, gst: 5, description: 'Family serving', image: 'https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?q=80&w=300&auto=format&fit=crop', tag: 'Family', type: 'nonveg' },
+  { id: 'mrcb-004', name: 'Chicken Dum Biryani (Jumbo)', category: 'Biryani', price: 850, gst: 5, description: 'Parcel only', image: 'https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?q=80&w=300&auto=format&fit=crop', tag: 'Parcel Only', type: 'nonveg' },
+  { id: 'mrcb-005', name: 'Chicken Fry Biryani (S)', category: 'Biryani', price: 160, gst: 5, description: 'Single', image: 'https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?q=80&w=300&auto=format&fit=crop', tag: '', type: 'nonveg' },
+  { id: 'mrcb-006', name: 'Chicken Fry Biryani (F)', category: 'Biryani', price: 300, gst: 5, description: 'Full', image: 'https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?q=80&w=300&auto=format&fit=crop', tag: '', type: 'nonveg' },
+  { id: 'mrcb-007', name: 'Chicken Fry Biryani (Family)', category: 'Biryani', price: 640, gst: 5, description: 'Family', image: 'https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?q=80&w=300&auto=format&fit=crop', tag: 'Family', type: 'nonveg' },
+  { id: 'mrcb-008', name: 'Mutton Fry Biryani (S)', category: 'Biryani', price: 250, gst: 5, description: 'Single', image: 'https://images.unsplash.com/photo-1633945274405-b6c8069047b0?q=80&w=300&auto=format&fit=crop', tag: 'Chef Choice', type: 'nonveg' },
+  { id: 'mrcb-009', name: 'Mutton Fry Biryani (F)', category: 'Biryani', price: 480, gst: 5, description: 'Full', image: 'https://images.unsplash.com/photo-1633945274405-b6c8069047b0?q=80&w=300&auto=format&fit=crop', tag: '', type: 'nonveg' },
+  { id: 'mrcb-010', name: 'Mutton Fry Biryani (Family)', category: 'Biryani', price: 900, gst: 5, description: 'Family', image: 'https://images.unsplash.com/photo-1633945274405-b6c8069047b0?q=80&w=300&auto=format&fit=crop', tag: 'Family', type: 'nonveg' },
+  { id: 'mrcb-011', name: 'Mutton Fry Biryani (Jumbo)', category: 'Biryani', price: 1100, gst: 5, description: 'Parcel only', image: 'https://images.unsplash.com/photo-1633945274405-b6c8069047b0?q=80&w=300&auto=format&fit=crop', tag: 'Parcel Only', type: 'nonveg' },
+  { id: 'mrcb-012', name: 'MRCB SPL Biryani (S)', category: 'Biryani', price: 200, gst: 5, description: 'Special single', image: 'https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?q=80&w=300&auto=format&fit=crop', tag: 'Special', type: 'nonveg' },
+  { id: 'mrcb-013', name: 'MRCB SPL Biryani (F)', category: 'Biryani', price: 380, gst: 5, description: 'Special full', image: 'https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?q=80&w=300&auto=format&fit=crop', tag: '', type: 'nonveg' },
+  { id: 'mrcb-014', name: 'MRCB SPL Biryani (Family)', category: 'Biryani', price: 750, gst: 5, description: 'Special family', image: 'https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?q=80&w=300&auto=format&fit=crop', tag: 'Family', type: 'nonveg' },
+  { id: 'mrcb-015', name: 'Kamju Biryani (S)', category: 'Biryani', price: 250, gst: 5, description: 'Single', image: 'https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?q=80&w=300&auto=format&fit=crop', tag: '', type: 'nonveg' },
+  { id: 'mrcb-016', name: 'Rabbit Biryani (S)', category: 'Biryani', price: 250, gst: 5, description: 'Single', image: 'https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?q=80&w=300&auto=format&fit=crop', tag: '', type: 'nonveg' },
+  { id: 'mrcb-017', name: 'Prawns Biryani (S)', category: 'Biryani', price: 250, gst: 5, description: 'Single', image: 'https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?q=80&w=300&auto=format&fit=crop', tag: '', type: 'nonveg' },
+  { id: 'mrcb-018', name: 'Natukodi Fry Biryani (S)', category: 'Biryani', price: 250, gst: 5, description: 'Single', image: 'https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?q=80&w=300&auto=format&fit=crop', tag: '', type: 'nonveg' },
+  { id: 'mrcb-019', name: 'Egg Biryani (S)', category: 'Biryani', price: 120, gst: 5, description: 'Single', image: 'https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?q=80&w=300&auto=format&fit=crop', tag: '', type: 'egg' },
+  { id: 'mrcb-020', name: 'Biryani Rice', category: 'Biryani', price: 100, gst: 5, description: 'Plain biryani rice', image: 'https://images.unsplash.com/photo-1512058564366-18510be2db19?q=80&w=300&auto=format&fit=crop', tag: '', type: 'veg' },
+  // CURRY
+  { id: 'mrcb-021', name: 'Natu Kodi Fry (S)', category: 'Curry', price: 110, gst: 5, description: '125g', image: 'https://images.unsplash.com/photo-1569058242253-92a9c755a0ec?q=80&w=300&auto=format&fit=crop', tag: '', type: 'nonveg' },
+  { id: 'mrcb-022', name: 'Natu Kodi Fry (F)', category: 'Curry', price: 220, gst: 5, description: '250g', image: 'https://images.unsplash.com/photo-1569058242253-92a9c755a0ec?q=80&w=300&auto=format&fit=crop', tag: '', type: 'nonveg' },
+  { id: 'mrcb-023', name: 'Natukodi Curry (S)', category: 'Curry', price: 90, gst: 5, description: '125g', image: 'https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?q=80&w=300&auto=format&fit=crop', tag: '', type: 'nonveg' },
+  { id: 'mrcb-024', name: 'Natukodi Curry (F)', category: 'Curry', price: 180, gst: 5, description: '250g', image: 'https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?q=80&w=300&auto=format&fit=crop', tag: '', type: 'nonveg' },
+  { id: 'mrcb-025', name: 'Chicken Fry (S)', category: 'Curry', price: 80, gst: 5, description: '125g', image: 'https://images.unsplash.com/photo-1569058242253-92a9c755a0ec?q=80&w=300&auto=format&fit=crop', tag: 'Bestseller', type: 'nonveg' },
+  { id: 'mrcb-026', name: 'Chicken Fry (F)', category: 'Curry', price: 160, gst: 5, description: '250g', image: 'https://images.unsplash.com/photo-1569058242253-92a9c755a0ec?q=80&w=300&auto=format&fit=crop', tag: '', type: 'nonveg' },
+  { id: 'mrcb-027', name: 'Chicken Curry (S)', category: 'Curry', price: 60, gst: 5, description: '125g', image: 'https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?q=80&w=300&auto=format&fit=crop', tag: '', type: 'nonveg' },
+  { id: 'mrcb-028', name: 'Chicken Curry (F)', category: 'Curry', price: 120, gst: 5, description: '250g', image: 'https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?q=80&w=300&auto=format&fit=crop', tag: '', type: 'nonveg' },
+  { id: 'mrcb-029', name: 'Chicken 65 (S)', category: 'Curry', price: 100, gst: 5, description: '125g', image: 'https://images.unsplash.com/photo-1569058242253-92a9c755a0ec?q=80&w=300&auto=format&fit=crop', tag: 'Popular', type: 'nonveg' },
+  { id: 'mrcb-030', name: 'Chicken 65 (F)', category: 'Curry', price: 200, gst: 5, description: '250g', image: 'https://images.unsplash.com/photo-1569058242253-92a9c755a0ec?q=80&w=300&auto=format&fit=crop', tag: '', type: 'nonveg' },
+  { id: 'mrcb-031', name: 'Chicken Liver (S)', category: 'Curry', price: 50, gst: 5, description: '125g', image: 'https://images.unsplash.com/photo-1569058242253-92a9c755a0ec?q=80&w=300&auto=format&fit=crop', tag: '', type: 'nonveg' },
+  { id: 'mrcb-032', name: 'Chicken Liver (F)', category: 'Curry', price: 100, gst: 5, description: '250g', image: 'https://images.unsplash.com/photo-1569058242253-92a9c755a0ec?q=80&w=300&auto=format&fit=crop', tag: '', type: 'nonveg' },
+  { id: 'mrcb-033', name: 'Chicken Leg (1 Pc)', category: 'Curry', price: 70, gst: 5, description: 'Per piece', image: 'https://images.unsplash.com/photo-1569058242253-92a9c755a0ec?q=80&w=300&auto=format&fit=crop', tag: '', type: 'nonveg' },
+  { id: 'mrcb-034', name: 'Kandanakaya (S)', category: 'Curry', price: 70, gst: 5, description: 'Single', image: 'https://images.unsplash.com/photo-1569058242253-92a9c755a0ec?q=80&w=300&auto=format&fit=crop', tag: '', type: 'nonveg' },
+  { id: 'mrcb-035', name: 'Kandanakaya (F)', category: 'Curry', price: 140, gst: 5, description: 'Full', image: 'https://images.unsplash.com/photo-1569058242253-92a9c755a0ec?q=80&w=300&auto=format&fit=crop', tag: '', type: 'nonveg' },
+  // MUTTON & SEAFOOD
+  { id: 'mrcb-036', name: 'Mutton Fry (S)', category: 'Mutton', price: 150, gst: 5, description: '125g', image: 'https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?q=80&w=300&auto=format&fit=crop', tag: '', type: 'nonveg' },
+  { id: 'mrcb-037', name: 'Mutton Fry (F)', category: 'Mutton', price: 300, gst: 5, description: '250g', image: 'https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?q=80&w=300&auto=format&fit=crop', tag: '', type: 'nonveg' },
+  { id: 'mrcb-038', name: 'Mutton Curry (S)', category: 'Mutton', price: 100, gst: 5, description: '125g', image: 'https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?q=80&w=300&auto=format&fit=crop', tag: '', type: 'nonveg' },
+  { id: 'mrcb-039', name: 'Mutton Curry (F)', category: 'Mutton', price: 200, gst: 5, description: '250g', image: 'https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?q=80&w=300&auto=format&fit=crop', tag: '', type: 'nonveg' },
+  { id: 'mrcb-040', name: 'Mutton Boti (S)', category: 'Mutton', price: 100, gst: 5, description: '125g', image: 'https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?q=80&w=300&auto=format&fit=crop', tag: '', type: 'nonveg' },
+  { id: 'mrcb-041', name: 'Mutton Boti (F)', category: 'Mutton', price: 200, gst: 5, description: '250g', image: 'https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?q=80&w=300&auto=format&fit=crop', tag: '', type: 'nonveg' },
+  { id: 'mrcb-042', name: 'Mutton Liver (S)', category: 'Mutton', price: 100, gst: 5, description: '125g', image: 'https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?q=80&w=300&auto=format&fit=crop', tag: '', type: 'nonveg' },
+  { id: 'mrcb-043', name: 'Mutton Liver (F)', category: 'Mutton', price: 200, gst: 5, description: '250g', image: 'https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?q=80&w=300&auto=format&fit=crop', tag: '', type: 'nonveg' },
+  { id: 'mrcb-044', name: 'Appolo Fish (S)', category: 'Mutton', price: 150, gst: 5, description: '125g', image: 'https://images.unsplash.com/photo-1519984388953-d2406bc725e1?q=80&w=300&auto=format&fit=crop', tag: '', type: 'nonveg' },
+  { id: 'mrcb-045', name: 'Appolo Fish (F)', category: 'Mutton', price: 300, gst: 5, description: '250g', image: 'https://images.unsplash.com/photo-1519984388953-d2406bc725e1?q=80&w=300&auto=format&fit=crop', tag: '', type: 'nonveg' },
+  { id: 'mrcb-046', name: 'Prawns Fry (S)', category: 'Mutton', price: 150, gst: 5, description: '125g', image: 'https://images.unsplash.com/photo-1519984388953-d2406bc725e1?q=80&w=300&auto=format&fit=crop', tag: '', type: 'nonveg' },
+  { id: 'mrcb-047', name: 'Prawns Fry (F)', category: 'Mutton', price: 300, gst: 5, description: '250g', image: 'https://images.unsplash.com/photo-1519984388953-d2406bc725e1?q=80&w=300&auto=format&fit=crop', tag: '', type: 'nonveg' },
+  { id: 'mrcb-048', name: 'Fish Fry', category: 'Mutton', price: 70, gst: 5, description: 'Per piece', image: 'https://images.unsplash.com/photo-1519984388953-d2406bc725e1?q=80&w=300&auto=format&fit=crop', tag: '', type: 'nonveg' },
+  { id: 'mrcb-049', name: 'Kamju Fry (S)', category: 'Mutton', price: 90, gst: 5, description: '125g', image: 'https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?q=80&w=300&auto=format&fit=crop', tag: '', type: 'nonveg' },
+  { id: 'mrcb-050', name: 'Kamju Fry (F)', category: 'Mutton', price: 100, gst: 5, description: '250g', image: 'https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?q=80&w=300&auto=format&fit=crop', tag: '', type: 'nonveg' },
+  // ROTI
+  { id: 'mrcb-051', name: 'Pulka', category: 'Roti', price: 15, gst: 5, description: 'Single piece', image: 'https://images.unsplash.com/photo-1574071318508-1cdbab80d002?q=80&w=300&auto=format&fit=crop', tag: '', type: 'veg' },
+  { id: 'mrcb-052', name: 'Pulka with Veg Curry', category: 'Roti', price: 50, gst: 5, description: 'Pulka + veg curry', image: 'https://images.unsplash.com/photo-1574071318508-1cdbab80d002?q=80&w=300&auto=format&fit=crop', tag: '', type: 'veg' },
+  { id: 'mrcb-053', name: 'Pulka Extra', category: 'Roti', price: 25, gst: 5, description: 'Extra pulka', image: 'https://images.unsplash.com/photo-1574071318508-1cdbab80d002?q=80&w=300&auto=format&fit=crop', tag: '', type: 'veg' },
+  { id: 'mrcb-054', name: 'Rumali Roti', category: 'Roti', price: 25, gst: 5, description: 'Single piece', image: 'https://images.unsplash.com/photo-1574071318508-1cdbab80d002?q=80&w=300&auto=format&fit=crop', tag: '', type: 'veg' },
+  { id: 'mrcb-055', name: 'Rumali Roti with Veg Curry', category: 'Roti', price: 70, gst: 5, description: 'Rumali + veg curry', image: 'https://images.unsplash.com/photo-1574071318508-1cdbab80d002?q=80&w=300&auto=format&fit=crop', tag: '', type: 'veg' },
+  { id: 'mrcb-056', name: 'Rumali Roti Extra', category: 'Roti', price: 30, gst: 5, description: 'Extra rumali', image: 'https://images.unsplash.com/photo-1574071318508-1cdbab80d002?q=80&w=300&auto=format&fit=crop', tag: '', type: 'veg' },
+  { id: 'mrcb-057', name: 'Jawari Roti', category: 'Roti', price: 25, gst: 5, description: 'Single piece', image: 'https://images.unsplash.com/photo-1574071318508-1cdbab80d002?q=80&w=300&auto=format&fit=crop', tag: '', type: 'veg' },
+  { id: 'mrcb-058', name: 'Jawari Roti with Curry', category: 'Roti', price: 70, gst: 5, description: 'Jawari + curry', image: 'https://images.unsplash.com/photo-1574071318508-1cdbab80d002?q=80&w=300&auto=format&fit=crop', tag: '', type: 'veg' },
+  { id: 'mrcb-059', name: 'Sarva Roti', category: 'Roti', price: 30, gst: 5, description: 'Single piece', image: 'https://images.unsplash.com/photo-1574071318508-1cdbab80d002?q=80&w=300&auto=format&fit=crop', tag: '', type: 'veg' },
+  { id: 'mrcb-060', name: 'Sarvappa (Single Bole)', category: 'Roti', price: 50, gst: 5, description: 'With curry', image: 'https://images.unsplash.com/photo-1574071318508-1cdbab80d002?q=80&w=300&auto=format&fit=crop', tag: '', type: 'veg' },
+  // VEG
+  { id: 'mrcb-061', name: 'Veg Meals (1 Person)', category: 'Veg', price: 100, gst: 5, description: 'Full veg meal', image: 'https://images.unsplash.com/photo-1565557623262-b51c2513a641?q=80&w=300&auto=format&fit=crop', tag: 'Value Meal', type: 'veg' },
+  { id: 'mrcb-062', name: 'White Rice', category: 'Veg', price: 100, gst: 5, description: 'Full plate', image: 'https://images.unsplash.com/photo-1512058564366-18510be2db19?q=80&w=300&auto=format&fit=crop', tag: '', type: 'veg' },
+  { id: 'mrcb-063', name: 'Only Rice', category: 'Veg', price: 40, gst: 5, description: 'Plain rice', image: 'https://images.unsplash.com/photo-1512058564366-18510be2db19?q=80&w=300&auto=format&fit=crop', tag: '', type: 'veg' },
+  { id: 'mrcb-064', name: 'Boiled Egg', category: 'Veg', price: 10, gst: 5, description: 'Per piece', image: 'https://images.unsplash.com/photo-1516684732162-798a0062be99?q=80&w=300&auto=format&fit=crop', tag: '', type: 'egg' },
 ];
-
 const { height: SCREEN_HEIGHT } = Dimensions.get('window');
 
 export default function App() {
@@ -717,8 +675,8 @@ function BillingTab() {
 
     const amount = getGrandTotal().toFixed(2);
     const mode = selectedPaymentMode;
-    const shop = "Personal POS";
-    const receiptLink = `https://wpdtgcotwyytwhzxeizi.supabase.co/functions/v1/invoice?num=${encodeURIComponent(invoiceNum)}`;
+    const shop = "MRCB Restaurant";
+    const receiptLink = `https://raw.githack.com/surajtakkallapelly-design/zero-cost-pos/main/invoice.html?num=${encodeURIComponent(invoiceNum)}`;
 
     const text = `👉 *INVOICE FROM ${shop}*\n\n` +
       `Your total bill is *₹${amount}* paid via *${mode}*. ` +
@@ -2043,7 +2001,7 @@ function StatsTab({ session }) {
 
   const loadStats = async () => {
     try {
-      const { data, error } = await supabase.from('orders').select('grand_total, subtotal, tax_amount, payment_mode, created_at, order_type');
+      const { data, error } = await supabase.from('orders').select('grand_total, subtotal, tax_amount, payment_mode, created_at, order_number');
       if (error) throw error;
 
       const allOrders = data || [];
@@ -2086,7 +2044,8 @@ function StatsTab({ session }) {
           if (order.payment_mode === 'CARD') cardSales += total;
           if (order.payment_mode === 'UPI') upiSales += total;
           totalGST += parseFloat(order.tax_amount) || 0;
-          if (order.order_type === 'Takeaway') takeawayCount += 1;
+          const isTakeaway = order.order_number && order.order_number.includes('Takeaway');
+          if (isTakeaway) takeawayCount += 1;
           else dineInCount += 1;
         }
 
