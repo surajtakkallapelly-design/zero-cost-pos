@@ -204,6 +204,7 @@ function LoginView({ onBypass }) {
   const [isSignUp, setIsSignUp] = useState(false);
   const [loading, setLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
+  const [isPasswordVisible, setIsPasswordVisible] = useState(false);
 
   const handleAuth = async () => {
     Keyboard.dismiss();
@@ -215,16 +216,22 @@ function LoginView({ onBypass }) {
     setErrorMessage('');
     try {
       if (isSignUp) {
-        const { error } = await supabase.auth.signUp({
+        const { data, error } = await supabase.auth.signUp({
           email: email.trim(),
           password: password,
         });
         if (error) throw error;
-        Alert.alert(
-          'Success', 
-          'Registration complete! If email confirmation is enabled, check your inbox to confirm your email before logging in.'
-        );
-        setIsSignUp(false); // return to login stage
+        
+        // Auto-login after sign up if session wasn't automatically established:
+        if (!data?.session) {
+          const { error: signInErr } = await supabase.auth.signInWithPassword({
+            email: email.trim(),
+            password: password,
+          });
+          if (signInErr) throw signInErr;
+        } else {
+          Alert.alert('Success', 'Operator account created successfully!');
+        }
       } else {
         const { error } = await supabase.auth.signInWithPassword({
           email: email.trim(),
@@ -264,16 +271,28 @@ function LoginView({ onBypass }) {
             />
 
             {/* Password Input */}
-            <TextInput
-              style={styles.textInput}
-              placeholder="Password"
-              placeholderTextColor="#555"
-              value={password}
-              onChangeText={setPassword}
-              secureTextEntry
-              autoCapitalize="none"
-              autoCorrect={false}
-            />
+            <View style={styles.passwordInputWrapper}>
+              <TextInput
+                style={styles.passwordInput}
+                placeholder="Password"
+                placeholderTextColor="#555"
+                value={password}
+                onChangeText={setPassword}
+                secureTextEntry={!isPasswordVisible}
+                autoCapitalize="none"
+                autoCorrect={false}
+              />
+              <TouchableOpacity 
+                style={styles.passwordToggleIcon}
+                onPress={() => setIsPasswordVisible(!isPasswordVisible)}
+              >
+                <Ionicons 
+                  name={isPasswordVisible ? "eye-off-outline" : "eye-outline"} 
+                  size={22} 
+                  color="#64748B" 
+                />
+              </TouchableOpacity>
+            </View>
 
             <TouchableOpacity style={styles.actionBtn} onPress={handleAuth} disabled={loading}>
               {loading ? (
@@ -2763,6 +2782,27 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: '#E2E8F0',
     marginBottom: 20,
+  },
+  passwordInputWrapper: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: '#F8FAFC',
+    borderRadius: 16,
+    height: 52,
+    borderWidth: 1,
+    borderColor: '#E2E8F0',
+    marginBottom: 20,
+    paddingHorizontal: 16,
+  },
+  passwordInput: {
+    flex: 1,
+    height: '100%',
+    color: '#1E293B',
+    fontSize: 16,
+    padding: 0,
+  },
+  passwordToggleIcon: {
+    padding: 4,
   },
   phoneInputWrapper: {
     flexDirection: 'row',
