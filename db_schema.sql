@@ -14,8 +14,12 @@ create extension if not exists "uuid-ossp";
 create table public.products (
     id uuid default gen_random_uuid() primary key,
     name text not null,
+    category text not null,
     price numeric(10, 2) not null,
-    gst_rate numeric(5, 2) not null default 0.00,
+    gst numeric(5, 2) not null default 5.00,
+    description text,
+    tag text,
+    type text not null default 'veg',
     sku text unique,
     created_at timestamp with time zone default timezone('utc'::text, now()) not null
 );

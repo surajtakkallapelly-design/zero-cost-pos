@@ -44,74 +44,74 @@ const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY, {
 // MRCB Restaurant Menu
 const CATALOG_PRODUCTS = [
   // BIRYANI
-  { id: 'mrcb-001', name: 'Chicken Dum Biryani (S)', category: 'Biryani', price: 150, gst: 5, description: 'Single 125g', image: 'https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?q=80&w=300&auto=format&fit=crop', tag: 'Bestseller', type: 'nonveg' },
-  { id: 'mrcb-002', name: 'Chicken Dum Biryani (F)', category: 'Biryani', price: 280, gst: 5, description: 'Full 250g', image: 'https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?q=80&w=300&auto=format&fit=crop', tag: '', type: 'nonveg' },
-  { id: 'mrcb-003', name: 'Chicken Family Pack', category: 'Biryani', price: 600, gst: 5, description: 'Family serving', image: 'https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?q=80&w=300&auto=format&fit=crop', tag: 'Family', type: 'nonveg' },
-  { id: 'mrcb-004', name: 'Chicken Dum Biryani (Jumbo)', category: 'Biryani', price: 850, gst: 5, description: 'Parcel only', image: 'https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?q=80&w=300&auto=format&fit=crop', tag: 'Parcel Only', type: 'nonveg' },
-  { id: 'mrcb-005', name: 'Chicken Fry Biryani (S)', category: 'Biryani', price: 160, gst: 5, description: 'Single', image: 'https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?q=80&w=300&auto=format&fit=crop', tag: '', type: 'nonveg' },
-  { id: 'mrcb-006', name: 'Chicken Fry Biryani (F)', category: 'Biryani', price: 300, gst: 5, description: 'Full', image: 'https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?q=80&w=300&auto=format&fit=crop', tag: '', type: 'nonveg' },
-  { id: 'mrcb-007', name: 'Chicken Fry Biryani (Family)', category: 'Biryani', price: 640, gst: 5, description: 'Family', image: 'https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?q=80&w=300&auto=format&fit=crop', tag: 'Family', type: 'nonveg' },
-  { id: 'mrcb-008', name: 'Mutton Fry Biryani (S)', category: 'Biryani', price: 250, gst: 5, description: 'Single', image: 'https://images.unsplash.com/photo-1633945274405-b6c8069047b0?q=80&w=300&auto=format&fit=crop', tag: 'Chef Choice', type: 'nonveg' },
-  { id: 'mrcb-009', name: 'Mutton Fry Biryani (F)', category: 'Biryani', price: 480, gst: 5, description: 'Full', image: 'https://images.unsplash.com/photo-1633945274405-b6c8069047b0?q=80&w=300&auto=format&fit=crop', tag: '', type: 'nonveg' },
-  { id: 'mrcb-010', name: 'Mutton Fry Biryani (Family)', category: 'Biryani', price: 900, gst: 5, description: 'Family', image: 'https://images.unsplash.com/photo-1633945274405-b6c8069047b0?q=80&w=300&auto=format&fit=crop', tag: 'Family', type: 'nonveg' },
-  { id: 'mrcb-011', name: 'Mutton Fry Biryani (Jumbo)', category: 'Biryani', price: 1100, gst: 5, description: 'Parcel only', image: 'https://images.unsplash.com/photo-1633945274405-b6c8069047b0?q=80&w=300&auto=format&fit=crop', tag: 'Parcel Only', type: 'nonveg' },
-  { id: 'mrcb-012', name: 'MRCB SPL Biryani (S)', category: 'Biryani', price: 200, gst: 5, description: 'Special single', image: 'https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?q=80&w=300&auto=format&fit=crop', tag: 'Special', type: 'nonveg' },
-  { id: 'mrcb-013', name: 'MRCB SPL Biryani (F)', category: 'Biryani', price: 380, gst: 5, description: 'Special full', image: 'https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?q=80&w=300&auto=format&fit=crop', tag: '', type: 'nonveg' },
-  { id: 'mrcb-014', name: 'MRCB SPL Biryani (Family)', category: 'Biryani', price: 750, gst: 5, description: 'Special family', image: 'https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?q=80&w=300&auto=format&fit=crop', tag: 'Family', type: 'nonveg' },
-  { id: 'mrcb-015', name: 'Kamju Biryani (S)', category: 'Biryani', price: 250, gst: 5, description: 'Single', image: 'https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?q=80&w=300&auto=format&fit=crop', tag: '', type: 'nonveg' },
-  { id: 'mrcb-016', name: 'Rabbit Biryani (S)', category: 'Biryani', price: 250, gst: 5, description: 'Single', image: 'https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?q=80&w=300&auto=format&fit=crop', tag: '', type: 'nonveg' },
-  { id: 'mrcb-017', name: 'Prawns Biryani (S)', category: 'Biryani', price: 250, gst: 5, description: 'Single', image: 'https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?q=80&w=300&auto=format&fit=crop', tag: '', type: 'nonveg' },
-  { id: 'mrcb-018', name: 'Natukodi Fry Biryani (S)', category: 'Biryani', price: 250, gst: 5, description: 'Single', image: 'https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?q=80&w=300&auto=format&fit=crop', tag: '', type: 'nonveg' },
-  { id: 'mrcb-019', name: 'Egg Biryani (S)', category: 'Biryani', price: 120, gst: 5, description: 'Single', image: 'https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?q=80&w=300&auto=format&fit=crop', tag: '', type: 'egg' },
-  { id: 'mrcb-020', name: 'Biryani Rice', category: 'Biryani', price: 100, gst: 5, description: 'Plain biryani rice', image: 'https://images.unsplash.com/photo-1512058564366-18510be2db19?q=80&w=300&auto=format&fit=crop', tag: '', type: 'veg' },
+  { id: 'mrcb-001', name: 'Chicken Dum Biryani (S)', category: 'Biryani', price: 150, gst: 5, description: 'Single 125g', tag: 'Bestseller', type: 'nonveg' },
+  { id: 'mrcb-002', name: 'Chicken Dum Biryani (F)', category: 'Biryani', price: 280, gst: 5, description: 'Full 250g', tag: '', type: 'nonveg' },
+  { id: 'mrcb-003', name: 'Chicken Family Pack', category: 'Biryani', price: 600, gst: 5, description: 'Family serving', tag: 'Family', type: 'nonveg' },
+  { id: 'mrcb-004', name: 'Chicken Dum Biryani (Jumbo)', category: 'Biryani', price: 850, gst: 5, description: 'Parcel only', tag: 'Parcel Only', type: 'nonveg' },
+  { id: 'mrcb-005', name: 'Chicken Fry Biryani (S)', category: 'Biryani', price: 160, gst: 5, description: 'Single', tag: '', type: 'nonveg' },
+  { id: 'mrcb-006', name: 'Chicken Fry Biryani (F)', category: 'Biryani', price: 300, gst: 5, description: 'Full', tag: '', type: 'nonveg' },
+  { id: 'mrcb-007', name: 'Chicken Fry Biryani (Family)', category: 'Biryani', price: 640, gst: 5, description: 'Family', tag: 'Family', type: 'nonveg' },
+  { id: 'mrcb-008', name: 'Mutton Fry Biryani (S)', category: 'Biryani', price: 250, gst: 5, description: 'Single', tag: 'Chef Choice', type: 'nonveg' },
+  { id: 'mrcb-009', name: 'Mutton Fry Biryani (F)', category: 'Biryani', price: 480, gst: 5, description: 'Full', tag: '', type: 'nonveg' },
+  { id: 'mrcb-010', name: 'Mutton Fry Biryani (Family)', category: 'Biryani', price: 900, gst: 5, description: 'Family', tag: 'Family', type: 'nonveg' },
+  { id: 'mrcb-011', name: 'Mutton Fry Biryani (Jumbo)', category: 'Biryani', price: 1100, gst: 5, description: 'Parcel only', tag: 'Parcel Only', type: 'nonveg' },
+  { id: 'mrcb-012', name: 'MRCB SPL Biryani (S)', category: 'Biryani', price: 200, gst: 5, description: 'Special single', tag: 'Special', type: 'nonveg' },
+  { id: 'mrcb-013', name: 'MRCB SPL Biryani (F)', category: 'Biryani', price: 380, gst: 5, description: 'Special full', tag: '', type: 'nonveg' },
+  { id: 'mrcb-014', name: 'MRCB SPL Biryani (Family)', category: 'Biryani', price: 750, gst: 5, description: 'Special family', tag: 'Family', type: 'nonveg' },
+  { id: 'mrcb-015', name: 'Kamju Biryani (S)', category: 'Biryani', price: 250, gst: 5, description: 'Single', tag: '', type: 'nonveg' },
+  { id: 'mrcb-016', name: 'Rabbit Biryani (S)', category: 'Biryani', price: 250, gst: 5, description: 'Single', tag: '', type: 'nonveg' },
+  { id: 'mrcb-017', name: 'Prawns Biryani (S)', category: 'Biryani', price: 250, gst: 5, description: 'Single', tag: '', type: 'nonveg' },
+  { id: 'mrcb-018', name: 'Natukodi Fry Biryani (S)', category: 'Biryani', price: 250, gst: 5, description: 'Single', tag: '', type: 'nonveg' },
+  { id: 'mrcb-019', name: 'Egg Biryani (S)', category: 'Biryani', price: 120, gst: 5, description: 'Single', tag: '', type: 'egg' },
+  { id: 'mrcb-020', name: 'Biryani Rice', category: 'Biryani', price: 100, gst: 5, description: 'Plain biryani rice', tag: '', type: 'veg' },
   // CURRY
-  { id: 'mrcb-021', name: 'Natu Kodi Fry (S)', category: 'Curry', price: 110, gst: 5, description: '125g', image: 'https://images.unsplash.com/photo-1569058242253-92a9c755a0ec?q=80&w=300&auto=format&fit=crop', tag: '', type: 'nonveg' },
-  { id: 'mrcb-022', name: 'Natu Kodi Fry (F)', category: 'Curry', price: 220, gst: 5, description: '250g', image: 'https://images.unsplash.com/photo-1569058242253-92a9c755a0ec?q=80&w=300&auto=format&fit=crop', tag: '', type: 'nonveg' },
-  { id: 'mrcb-023', name: 'Natukodi Curry (S)', category: 'Curry', price: 90, gst: 5, description: '125g', image: 'https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?q=80&w=300&auto=format&fit=crop', tag: '', type: 'nonveg' },
-  { id: 'mrcb-024', name: 'Natukodi Curry (F)', category: 'Curry', price: 180, gst: 5, description: '250g', image: 'https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?q=80&w=300&auto=format&fit=crop', tag: '', type: 'nonveg' },
-  { id: 'mrcb-025', name: 'Chicken Fry (S)', category: 'Curry', price: 80, gst: 5, description: '125g', image: 'https://images.unsplash.com/photo-1569058242253-92a9c755a0ec?q=80&w=300&auto=format&fit=crop', tag: 'Bestseller', type: 'nonveg' },
-  { id: 'mrcb-026', name: 'Chicken Fry (F)', category: 'Curry', price: 160, gst: 5, description: '250g', image: 'https://images.unsplash.com/photo-1569058242253-92a9c755a0ec?q=80&w=300&auto=format&fit=crop', tag: '', type: 'nonveg' },
-  { id: 'mrcb-027', name: 'Chicken Curry (S)', category: 'Curry', price: 60, gst: 5, description: '125g', image: 'https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?q=80&w=300&auto=format&fit=crop', tag: '', type: 'nonveg' },
-  { id: 'mrcb-028', name: 'Chicken Curry (F)', category: 'Curry', price: 120, gst: 5, description: '250g', image: 'https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?q=80&w=300&auto=format&fit=crop', tag: '', type: 'nonveg' },
-  { id: 'mrcb-029', name: 'Chicken 65 (S)', category: 'Curry', price: 100, gst: 5, description: '125g', image: 'https://images.unsplash.com/photo-1569058242253-92a9c755a0ec?q=80&w=300&auto=format&fit=crop', tag: 'Popular', type: 'nonveg' },
-  { id: 'mrcb-030', name: 'Chicken 65 (F)', category: 'Curry', price: 200, gst: 5, description: '250g', image: 'https://images.unsplash.com/photo-1569058242253-92a9c755a0ec?q=80&w=300&auto=format&fit=crop', tag: '', type: 'nonveg' },
-  { id: 'mrcb-031', name: 'Chicken Liver (S)', category: 'Curry', price: 50, gst: 5, description: '125g', image: 'https://images.unsplash.com/photo-1569058242253-92a9c755a0ec?q=80&w=300&auto=format&fit=crop', tag: '', type: 'nonveg' },
-  { id: 'mrcb-032', name: 'Chicken Liver (F)', category: 'Curry', price: 100, gst: 5, description: '250g', image: 'https://images.unsplash.com/photo-1569058242253-92a9c755a0ec?q=80&w=300&auto=format&fit=crop', tag: '', type: 'nonveg' },
-  { id: 'mrcb-033', name: 'Chicken Leg (1 Pc)', category: 'Curry', price: 70, gst: 5, description: 'Per piece', image: 'https://images.unsplash.com/photo-1569058242253-92a9c755a0ec?q=80&w=300&auto=format&fit=crop', tag: '', type: 'nonveg' },
-  { id: 'mrcb-034', name: 'Kandanakaya (S)', category: 'Curry', price: 70, gst: 5, description: 'Single', image: 'https://images.unsplash.com/photo-1569058242253-92a9c755a0ec?q=80&w=300&auto=format&fit=crop', tag: '', type: 'nonveg' },
-  { id: 'mrcb-035', name: 'Kandanakaya (F)', category: 'Curry', price: 140, gst: 5, description: 'Full', image: 'https://images.unsplash.com/photo-1569058242253-92a9c755a0ec?q=80&w=300&auto=format&fit=crop', tag: '', type: 'nonveg' },
+  { id: 'mrcb-021', name: 'Natu Kodi Fry (S)', category: 'Curry', price: 110, gst: 5, description: '125g', tag: '', type: 'nonveg' },
+  { id: 'mrcb-022', name: 'Natu Kodi Fry (F)', category: 'Curry', price: 220, gst: 5, description: '250g', tag: '', type: 'nonveg' },
+  { id: 'mrcb-023', name: 'Natukodi Curry (S)', category: 'Curry', price: 90, gst: 5, description: '125g', tag: '', type: 'nonveg' },
+  { id: 'mrcb-024', name: 'Natukodi Curry (F)', category: 'Curry', price: 180, gst: 5, description: '250g', tag: '', type: 'nonveg' },
+  { id: 'mrcb-025', name: 'Chicken Fry (S)', category: 'Curry', price: 80, gst: 5, description: '125g', tag: 'Bestseller', type: 'nonveg' },
+  { id: 'mrcb-026', name: 'Chicken Fry (F)', category: 'Curry', price: 160, gst: 5, description: '250g', tag: '', type: 'nonveg' },
+  { id: 'mrcb-027', name: 'Chicken Curry (S)', category: 'Curry', price: 60, gst: 5, description: '125g', tag: '', type: 'nonveg' },
+  { id: 'mrcb-028', name: 'Chicken Curry (F)', category: 'Curry', price: 120, gst: 5, description: '250g', tag: '', type: 'nonveg' },
+  { id: 'mrcb-029', name: 'Chicken 65 (S)', category: 'Curry', price: 100, gst: 5, description: '125g', tag: 'Popular', type: 'nonveg' },
+  { id: 'mrcb-030', name: 'Chicken 65 (F)', category: 'Curry', price: 200, gst: 5, description: '250g', tag: '', type: 'nonveg' },
+  { id: 'mrcb-031', name: 'Chicken Liver (S)', category: 'Curry', price: 50, gst: 5, description: '125g', tag: '', type: 'nonveg' },
+  { id: 'mrcb-032', name: 'Chicken Liver (F)', category: 'Curry', price: 100, gst: 5, description: '250g', tag: '', type: 'nonveg' },
+  { id: 'mrcb-033', name: 'Chicken Leg (1 Pc)', category: 'Curry', price: 70, gst: 5, description: 'Per piece', tag: '', type: 'nonveg' },
+  { id: 'mrcb-034', name: 'Kandanakaya (S)', category: 'Curry', price: 70, gst: 5, description: 'Single', tag: '', type: 'nonveg' },
+  { id: 'mrcb-035', name: 'Kandanakaya (F)', category: 'Curry', price: 140, gst: 5, description: 'Full', tag: '', type: 'nonveg' },
   // MUTTON & SEAFOOD
-  { id: 'mrcb-036', name: 'Mutton Fry (S)', category: 'Mutton', price: 150, gst: 5, description: '125g', image: 'https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?q=80&w=300&auto=format&fit=crop', tag: '', type: 'nonveg' },
-  { id: 'mrcb-037', name: 'Mutton Fry (F)', category: 'Mutton', price: 300, gst: 5, description: '250g', image: 'https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?q=80&w=300&auto=format&fit=crop', tag: '', type: 'nonveg' },
-  { id: 'mrcb-038', name: 'Mutton Curry (S)', category: 'Mutton', price: 100, gst: 5, description: '125g', image: 'https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?q=80&w=300&auto=format&fit=crop', tag: '', type: 'nonveg' },
-  { id: 'mrcb-039', name: 'Mutton Curry (F)', category: 'Mutton', price: 200, gst: 5, description: '250g', image: 'https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?q=80&w=300&auto=format&fit=crop', tag: '', type: 'nonveg' },
-  { id: 'mrcb-040', name: 'Mutton Boti (S)', category: 'Mutton', price: 100, gst: 5, description: '125g', image: 'https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?q=80&w=300&auto=format&fit=crop', tag: '', type: 'nonveg' },
-  { id: 'mrcb-041', name: 'Mutton Boti (F)', category: 'Mutton', price: 200, gst: 5, description: '250g', image: 'https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?q=80&w=300&auto=format&fit=crop', tag: '', type: 'nonveg' },
-  { id: 'mrcb-042', name: 'Mutton Liver (S)', category: 'Mutton', price: 100, gst: 5, description: '125g', image: 'https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?q=80&w=300&auto=format&fit=crop', tag: '', type: 'nonveg' },
-  { id: 'mrcb-043', name: 'Mutton Liver (F)', category: 'Mutton', price: 200, gst: 5, description: '250g', image: 'https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?q=80&w=300&auto=format&fit=crop', tag: '', type: 'nonveg' },
-  { id: 'mrcb-044', name: 'Appolo Fish (S)', category: 'Seafood', price: 150, gst: 5, description: '125g', image: 'https://images.unsplash.com/photo-1519984388953-d2406bc725e1?q=80&w=300&auto=format&fit=crop', tag: '', type: 'nonveg' },
-  { id: 'mrcb-045', name: 'Appolo Fish (F)', category: 'Seafood', price: 300, gst: 5, description: '250g', image: 'https://images.unsplash.com/photo-1519984388953-d2406bc725e1?q=80&w=300&auto=format&fit=crop', tag: '', type: 'nonveg' },
-  { id: 'mrcb-046', name: 'Prawns Fry (S)', category: 'Seafood', price: 150, gst: 5, description: '125g', image: 'https://images.unsplash.com/photo-1519984388953-d2406bc725e1?q=80&w=300&auto=format&fit=crop', tag: '', type: 'nonveg' },
-  { id: 'mrcb-047', name: 'Prawns Fry (F)', category: 'Seafood', price: 300, gst: 5, description: '250g', image: 'https://images.unsplash.com/photo-1519984388953-d2406bc725e1?q=80&w=300&auto=format&fit=crop', tag: '', type: 'nonveg' },
-  { id: 'mrcb-048', name: 'Fish Fry', category: 'Seafood', price: 70, gst: 5, description: 'Per piece', image: 'https://images.unsplash.com/photo-1519984388953-d2406bc725e1?q=80&w=300&auto=format&fit=crop', tag: '', type: 'nonveg' },
-  { id: 'mrcb-049', name: 'Kamju Fry (S)', category: 'Mutton', price: 90, gst: 5, description: '125g', image: 'https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?q=80&w=300&auto=format&fit=crop', tag: '', type: 'nonveg' },
-  { id: 'mrcb-050', name: 'Kamju Fry (F)', category: 'Mutton', price: 100, gst: 5, description: '250g', image: 'https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?q=80&w=300&auto=format&fit=crop', tag: '', type: 'nonveg' },
+  { id: 'mrcb-036', name: 'Mutton Fry (S)', category: 'Mutton', price: 150, gst: 5, description: '125g', tag: '', type: 'nonveg' },
+  { id: 'mrcb-037', name: 'Mutton Fry (F)', category: 'Mutton', price: 300, gst: 5, description: '250g', tag: '', type: 'nonveg' },
+  { id: 'mrcb-038', name: 'Mutton Curry (S)', category: 'Mutton', price: 100, gst: 5, description: '125g', tag: '', type: 'nonveg' },
+  { id: 'mrcb-039', name: 'Mutton Curry (F)', category: 'Mutton', price: 200, gst: 5, description: '250g', tag: '', type: 'nonveg' },
+  { id: 'mrcb-040', name: 'Mutton Boti (S)', category: 'Mutton', price: 100, gst: 5, description: '125g', tag: '', type: 'nonveg' },
+  { id: 'mrcb-041', name: 'Mutton Boti (F)', category: 'Mutton', price: 200, gst: 5, description: '250g', tag: '', type: 'nonveg' },
+  { id: 'mrcb-042', name: 'Mutton Liver (S)', category: 'Mutton', price: 100, gst: 5, description: '125g', tag: '', type: 'nonveg' },
+  { id: 'mrcb-043', name: 'Mutton Liver (F)', category: 'Mutton', price: 200, gst: 5, description: '250g', tag: '', type: 'nonveg' },
+  { id: 'mrcb-044', name: 'Appolo Fish (S)', category: 'Seafood', price: 150, gst: 5, description: '125g', tag: '', type: 'nonveg' },
+  { id: 'mrcb-045', name: 'Appolo Fish (F)', category: 'Seafood', price: 300, gst: 5, description: '250g', tag: '', type: 'nonveg' },
+  { id: 'mrcb-046', name: 'Prawns Fry (S)', category: 'Seafood', price: 150, gst: 5, description: '125g', tag: '', type: 'nonveg' },
+  { id: 'mrcb-047', name: 'Prawns Fry (F)', category: 'Seafood', price: 300, gst: 5, description: '250g', tag: '', type: 'nonveg' },
+  { id: 'mrcb-048', name: 'Fish Fry', category: 'Seafood', price: 70, gst: 5, description: 'Per piece', tag: '', type: 'nonveg' },
+  { id: 'mrcb-049', name: 'Kamju Fry (S)', category: 'Mutton', price: 90, gst: 5, description: '125g', tag: '', type: 'nonveg' },
+  { id: 'mrcb-050', name: 'Kamju Fry (F)', category: 'Mutton', price: 100, gst: 5, description: '250g', tag: '', type: 'nonveg' },
   // ROTI
-  { id: 'mrcb-051', name: 'Pulka', category: 'Roti', price: 15, gst: 5, description: 'Single piece', image: 'https://images.unsplash.com/photo-1574071318508-1cdbab80d002?q=80&w=300&auto=format&fit=crop', tag: '', type: 'veg' },
-  { id: 'mrcb-052', name: 'Pulka with Veg Curry', category: 'Roti', price: 50, gst: 5, description: 'Pulka + veg curry', image: 'https://images.unsplash.com/photo-1574071318508-1cdbab80d002?q=80&w=300&auto=format&fit=crop', tag: '', type: 'veg' },
-  { id: 'mrcb-053', name: 'Pulka Extra', category: 'Roti', price: 25, gst: 5, description: 'Extra pulka', image: 'https://images.unsplash.com/photo-1574071318508-1cdbab80d002?q=80&w=300&auto=format&fit=crop', tag: '', type: 'veg' },
-  { id: 'mrcb-054', name: 'Rumali Roti', category: 'Roti', price: 25, gst: 5, description: 'Single piece', image: 'https://images.unsplash.com/photo-1574071318508-1cdbab80d002?q=80&w=300&auto=format&fit=crop', tag: '', type: 'veg' },
-  { id: 'mrcb-055', name: 'Rumali Roti with Veg Curry', category: 'Roti', price: 70, gst: 5, description: 'Rumali + veg curry', image: 'https://images.unsplash.com/photo-1574071318508-1cdbab80d002?q=80&w=300&auto=format&fit=crop', tag: '', type: 'veg' },
-  { id: 'mrcb-056', name: 'Rumali Roti Extra', category: 'Roti', price: 30, gst: 5, description: 'Extra rumali', image: 'https://images.unsplash.com/photo-1574071318508-1cdbab80d002?q=80&w=300&auto=format&fit=crop', tag: '', type: 'veg' },
-  { id: 'mrcb-057', name: 'Jawari Roti', category: 'Roti', price: 25, gst: 5, description: 'Single piece', image: 'https://images.unsplash.com/photo-1574071318508-1cdbab80d002?q=80&w=300&auto=format&fit=crop', tag: '', type: 'veg' },
-  { id: 'mrcb-058', name: 'Jawari Roti with Curry', category: 'Roti', price: 70, gst: 5, description: 'Jawari + curry', image: 'https://images.unsplash.com/photo-1574071318508-1cdbab80d002?q=80&w=300&auto=format&fit=crop', tag: '', type: 'veg' },
-  { id: 'mrcb-059', name: 'Sarva Roti', category: 'Roti', price: 30, gst: 5, description: 'Single piece', image: 'https://images.unsplash.com/photo-1574071318508-1cdbab80d002?q=80&w=300&auto=format&fit=crop', tag: '', type: 'veg' },
-  { id: 'mrcb-060', name: 'Sarvappa (Single Bole)', category: 'Roti', price: 50, gst: 5, description: 'With curry', image: 'https://images.unsplash.com/photo-1574071318508-1cdbab80d002?q=80&w=300&auto=format&fit=crop', tag: '', type: 'veg' },
+  { id: 'mrcb-051', name: 'Pulka', category: 'Roti', price: 15, gst: 5, description: 'Single piece', tag: '', type: 'veg' },
+  { id: 'mrcb-052', name: 'Pulka with Veg Curry', category: 'Roti', price: 50, gst: 5, description: 'Pulka + veg curry', tag: '', type: 'veg' },
+  { id: 'mrcb-053', name: 'Pulka Extra', category: 'Roti', price: 25, gst: 5, description: 'Extra pulka', tag: '', type: 'veg' },
+  { id: 'mrcb-054', name: 'Rumali Roti', category: 'Roti', price: 25, gst: 5, description: 'Single piece', tag: '', type: 'veg' },
+  { id: 'mrcb-055', name: 'Rumali Roti with Veg Curry', category: 'Roti', price: 70, gst: 5, description: 'Rumali + veg curry', tag: '', type: 'veg' },
+  { id: 'mrcb-056', name: 'Rumali Roti Extra', category: 'Roti', price: 30, gst: 5, description: 'Extra rumali', tag: '', type: 'veg' },
+  { id: 'mrcb-057', name: 'Jawari Roti', category: 'Roti', price: 25, gst: 5, description: 'Single piece', tag: '', type: 'veg' },
+  { id: 'mrcb-058', name: 'Jawari Roti with Curry', category: 'Roti', price: 70, gst: 5, description: 'Jawari + curry', tag: '', type: 'veg' },
+  { id: 'mrcb-059', name: 'Sarva Roti', category: 'Roti', price: 30, gst: 5, description: 'Single piece', tag: '', type: 'veg' },
+  { id: 'mrcb-060', name: 'Sarvappa (Single Bole)', category: 'Roti', price: 50, gst: 5, description: 'With curry', tag: '', type: 'veg' },
   // VEG
-  { id: 'mrcb-061', name: 'Veg Meals (1 Person)', category: 'Veg', price: 100, gst: 5, description: 'Full veg meal', image: 'https://images.unsplash.com/photo-1565557623262-b51c2513a641?q=80&w=300&auto=format&fit=crop', tag: 'Value Meal', type: 'veg' },
-  { id: 'mrcb-062', name: 'White Rice', category: 'Veg', price: 100, gst: 5, description: 'Full plate', image: 'https://images.unsplash.com/photo-1512058564366-18510be2db19?q=80&w=300&auto=format&fit=crop', tag: '', type: 'veg' },
-  { id: 'mrcb-063', name: 'Only Rice', category: 'Veg', price: 40, gst: 5, description: 'Plain rice', image: 'https://images.unsplash.com/photo-1512058564366-18510be2db19?q=80&w=300&auto=format&fit=crop', tag: '', type: 'veg' },
-  { id: 'mrcb-064', name: 'Boiled Egg', category: 'Veg', price: 10, gst: 5, description: 'Per piece', image: 'https://images.unsplash.com/photo-1516684732162-798a0062be99?q=80&w=300&auto=format&fit=crop', tag: '', type: 'egg' },
+  { id: 'mrcb-061', name: 'Veg Meals (1 Person)', category: 'Veg', price: 100, gst: 5, description: 'Full veg meal', tag: 'Value Meal', type: 'veg' },
+  { id: 'mrcb-062', name: 'White Rice', category: 'Veg', price: 100, gst: 5, description: 'Full plate', tag: '', type: 'veg' },
+  { id: 'mrcb-063', name: 'Only Rice', category: 'Veg', price: 40, gst: 5, description: 'Plain rice', tag: '', type: 'veg' },
+  { id: 'mrcb-064', name: 'Boiled Egg', category: 'Veg', price: 10, gst: 5, description: 'Per piece', tag: '', type: 'egg' },
 ];
 const { height: SCREEN_HEIGHT } = Dimensions.get('window');
 
@@ -391,92 +391,131 @@ function BillingTab({ session }) {
     return () => sub.remove();
   }, [checkoutStep, showCustomModal, showSettingsModal, showBillReview, selectedPaymentMode]);
 
+  const loadCatalog = async () => {
+    try {
+      const { data, error } = await supabase
+        .from('products')
+        .select('*')
+        .order('created_at', { ascending: true });
+      if (error) throw error;
+
+      if (data && data.length > 0) {
+        const formatted = data.map((p) => ({
+          id: p.id,
+          name: p.name,
+          category: p.category || 'Veg',
+          price: parseFloat(p.price) || 0,
+          gst: parseFloat(p.gst) || 5.0,
+          description: p.description || '',
+          tag: p.tag || '',
+          type: p.type || 'veg',
+        }));
+        setCatalog(formatted);
+      } else {
+        // Seed the products table with CATALOG_PRODUCTS if empty
+        const seedData = CATALOG_PRODUCTS.map((p) => ({
+          name: p.name,
+          category: p.category,
+          price: p.price,
+          gst: p.gst,
+          description: p.description,
+          tag: p.tag,
+          type: p.type,
+        }));
+        const { error: seedErr } = await supabase.from('products').insert(seedData);
+        if (seedErr) throw seedErr;
+        loadCatalog();
+      }
+    } catch (err) {
+      console.log('Error loading catalog:', err);
+    }
+  };
+
   // Load custom QR and Catalog Menu configuration on mount
   useEffect(() => {
-    const loadCatalog = async () => {
-      try {
-        const savedCatalog = await AsyncStorage.getItem('pos_catalog');
-        if (savedCatalog) {
-          setCatalog(JSON.parse(savedCatalog));
-        }
-      } catch (err) {
-        console.log('Error loading catalog:', err);
-      }
-    };
     loadCatalog();
+
+    // Subscribe to realtime changes on products table
+    const channel = supabase
+      .channel('products-db-changes')
+      .on(
+        'postgres_changes',
+        { event: '*', schema: 'public', table: 'products' },
+        () => {
+          loadCatalog();
+        }
+      )
+      .subscribe();
+
+    return () => {
+      supabase.removeChannel(channel);
+    };
   }, []);
 
-  const saveCatalogLocally = async (updatedCatalog) => {
-    setCatalog(updatedCatalog);
+  const handleAddCatalogProduct = async () => {
+    const price = parseFloat(catProdPrice);
+    if (!catProdName || !catProdCategory || isNaN(price) || price <= 0) {
+      Alert.alert('Invalid Input', 'Please enter a valid name, category, and price.');
+      return;
+    }
     try {
-      await AsyncStorage.setItem('pos_catalog', JSON.stringify(updatedCatalog));
+      const newProduct = {
+        name: catProdName,
+        category: catProdCategory,
+        price: price,
+        gst: 5.0,
+        description: 'Custom added menu item.',
+        tag: catProdTag.trim() || null,
+        type: catProdType,
+      };
+
+      const { error } = await supabase.from('products').insert(newProduct);
+      if (error) throw error;
+      
+      // reset inputs
+      setCatProdName('');
+      setCatProdCategory('');
+      setCatProdPrice('');
+      setCatProdTag('');
+      setCatProdType('veg');
+      setIsAddingCatalogProduct(false);
+      Alert.alert('Success', 'Item added to catalog.');
     } catch (err) {
-      console.log('Error saving catalog:', err);
+      Alert.alert('Error adding product', err.message);
     }
   };
 
-  const handleAddCatalogProduct = () => {
+  const handleEditCatalogProduct = async () => {
     const price = parseFloat(catProdPrice);
     if (!catProdName || !catProdCategory || isNaN(price) || price <= 0) {
       Alert.alert('Invalid Input', 'Please enter a valid name, category, and price.');
       return;
     }
-    const newProduct = {
-      id: 'catalog-' + Date.now(),
-      name: catProdName,
-      category: catProdCategory,
-      price: price,
-      gst: 18.0,
-      description: 'Custom added menu item.',
-      image: (catProdImage && typeof catProdImage === 'string') ? catProdImage.trim() : 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?q=80&w=300&auto=format&fit=crop',
-      tag: catProdTag.trim() || null,
-      type: catProdType,
-    };
-    const updated = [...catalog, newProduct];
-    saveCatalogLocally(updated);
-    
-    // reset inputs
-    setCatProdName('');
-    setCatProdCategory('');
-    setCatProdPrice('');
-    setCatProdImage('');
-    setCatProdTag('');
-    setCatProdType('veg');
-    setIsAddingCatalogProduct(false);
-    Alert.alert('Success', 'Item added to catalog.');
-  };
-
-  const handleEditCatalogProduct = () => {
-    const price = parseFloat(catProdPrice);
-    if (!catProdName || !catProdCategory || isNaN(price) || price <= 0) {
-      Alert.alert('Invalid Input', 'Please enter a valid name, category, and price.');
-      return;
-    }
-    const updated = catalog.map((p) => {
-      if (p.id === editingCatalogProduct.id) {
-        return {
-          ...p,
+    try {
+      const { error } = await supabase
+        .from('products')
+        .update({
           name: catProdName,
           category: catProdCategory,
           price: price,
-          image: (catProdImage && typeof catProdImage === 'string') ? catProdImage.trim() : p.image,
           tag: catProdTag.trim() || null,
           type: catProdType,
-        };
-      }
-      return p;
-    });
-    saveCatalogLocally(updated);
+        })
+        .eq('id', editingCatalogProduct.id);
+      
+      if (error) throw error;
 
-    // reset inputs
-    setCatProdName('');
-    setCatProdCategory('');
-    setCatProdPrice('');
-    setCatProdImage('');
-    setCatProdTag('');
-    setCatProdType('veg');
-    setEditingCatalogProduct(null);
-    Alert.alert('Success', 'Item updated.');
+      // reset inputs
+      setCatProdName('');
+      setCatProdCategory('');
+      setCatProdPrice('');
+      setCatProdTag('');
+      setCatProdType('veg');
+      setEditingCatalogProduct(null);
+      Alert.alert('Success', 'Item updated.');
+    } catch (err) {
+      Alert.alert('Error updating product', err.message);
+    }
   };
 
   const handleDeleteCatalogProduct = (productId, productName) => {
@@ -488,9 +527,13 @@ function BillingTab({ session }) {
         {
           text: 'Delete',
           style: 'destructive',
-          onPress: () => {
-            const updated = catalog.filter((p) => p.id !== productId);
-            saveCatalogLocally(updated);
+          onPress: async () => {
+            try {
+              const { error } = await supabase.from('products').delete().eq('id', productId);
+              if (error) throw error;
+            } catch (err) {
+              Alert.alert('Error deleting product', err.message);
+            }
           },
         },
       ]
@@ -502,7 +545,6 @@ function BillingTab({ session }) {
     setCatProdName(product.name);
     setCatProdCategory(product.category);
     setCatProdPrice(product.price.toString());
-    setCatProdImage(product.image);
     setCatProdTag(product.tag || '');
     setCatProdType(product.type || 'veg');
   };
@@ -667,7 +709,6 @@ function BillingTab({ session }) {
         price: price,
         gst: 18.0, // Fixed 18% GST for all custom items
         category: categoryVal,
-        image: 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?q=80&w=300&auto=format&fit=crop',
         type: customType,
       };
       
@@ -897,21 +938,18 @@ function BillingTab({ session }) {
                   ]}
                   onPress={() => addToCart(item)}
                 >
-                  <View style={styles.cardImageWrapper}>
-                    <Image source={{ uri: item.image }} style={styles.cardImage} />
-                    <View style={styles.vegIndicatorWrapper}>
-                      <View
-                        style={[
-                          styles.vegIndicatorDot,
-                          item.type === 'veg' && { backgroundColor: '#10B981' },
-                          item.type === 'egg' && { backgroundColor: '#F59E0B' },
-                          item.type === 'nonveg' && { backgroundColor: '#EF4444' },
-                        ]}
-                      />
-                    </View>
+                  <View style={styles.cardHeaderRow}>
+                    <View
+                      style={[
+                        styles.vegIndicatorDotMini,
+                        item.type === 'veg' && { backgroundColor: '#10B981' },
+                        item.type === 'egg' && { backgroundColor: '#F59E0B' },
+                        item.type === 'nonveg' && { backgroundColor: '#EF4444' },
+                      ]}
+                    />
                     {isInCart && (
-                      <View style={styles.qtyBadge}>
-                        <Text style={styles.qtyBadgeText}>{qty}</Text>
+                      <View style={styles.qtyBadgeMini}>
+                        <Text style={styles.qtyBadgeTextMini}>{qty}</Text>
                       </View>
                     )}
                   </View>
@@ -1126,7 +1164,15 @@ function BillingTab({ session }) {
               contentContainerStyle={styles.reviewList}
               renderItem={({ item, index }) => (
                 <View style={styles.reviewRow}>
-                  <Image source={{ uri: item.image }} style={styles.reviewRowThumb} />
+                  <View
+                    style={[
+                      styles.vegIndicatorDotMini,
+                      item.type === 'veg' && { backgroundColor: '#10B981' },
+                      item.type === 'egg' && { backgroundColor: '#F59E0B' },
+                      item.type === 'nonveg' && { backgroundColor: '#EF4444' },
+                      { marginRight: 8 }
+                    ]}
+                  />
                   
                   <View style={styles.reviewRowInfo}>
                     <Text style={styles.reviewItemName} numberOfLines={1}>{item.name}</Text>
@@ -1218,25 +1264,7 @@ function BillingTab({ session }) {
                       onChangeText={setCatProdPrice}
                     />
 
-                    <Text style={styles.modalFieldLabel}>Product Image (Optional)</Text>
-                    <View style={styles.productImagePickerContainer}>
-                      {catProdImage ? (
-                        <View style={styles.productImagePreviewWrapper}>
-                          <Image source={{ uri: catProdImage }} style={styles.productImagePreview} />
-                          <TouchableOpacity 
-                            style={styles.productImageRemoveBtn} 
-                            onPress={() => setCatProdImage('')}
-                          >
-                            <Ionicons name="close-circle" size={24} color="#EF4444" />
-                          </TouchableOpacity>
-                        </View>
-                      ) : (
-                        <TouchableOpacity style={styles.productImagePickBtn} onPress={handlePickProductImage}>
-                          <Ionicons name="image-outline" size={24} color="#2563EB" style={{ marginRight: 8 }} />
-                          <Text style={styles.productImagePickBtnText}>Select Picture</Text>
-                        </TouchableOpacity>
-                      )}
-                    </View>
+
 
                     <Text style={styles.modalFieldLabel}>Highlight Tag (Optional)</Text>
                     <TextInput
@@ -1308,25 +1336,7 @@ function BillingTab({ session }) {
                       onChangeText={setCatProdPrice}
                     />
 
-                    <Text style={styles.modalFieldLabel}>Product Image</Text>
-                    <View style={styles.productImagePickerContainer}>
-                      {catProdImage ? (
-                        <View style={styles.productImagePreviewWrapper}>
-                          <Image source={{ uri: catProdImage }} style={styles.productImagePreview} />
-                          <TouchableOpacity 
-                            style={styles.productImageRemoveBtn} 
-                            onPress={() => setCatProdImage('')}
-                          >
-                            <Ionicons name="close-circle" size={24} color="#EF4444" />
-                          </TouchableOpacity>
-                        </View>
-                      ) : (
-                        <TouchableOpacity style={styles.productImagePickBtn} onPress={handlePickProductImage}>
-                          <Ionicons name="image-outline" size={24} color="#2563EB" style={{ marginRight: 8 }} />
-                          <Text style={styles.productImagePickBtnText}>Select Picture</Text>
-                        </TouchableOpacity>
-                      )}
-                    </View>
+
 
                     <Text style={styles.modalFieldLabel}>Highlight Tag</Text>
                     <TextInput
@@ -1443,7 +1453,15 @@ function BillingTab({ session }) {
                         }
                         renderItem={({ item: prod }) => (
                           <View style={styles.menuItemRow}>
-                            <Image source={{ uri: prod.image }} style={styles.menuItemThumb} />
+                            <View
+                              style={[
+                                styles.vegIndicatorDotMini,
+                                prod.type === 'veg' && { backgroundColor: '#10B981' },
+                                prod.type === 'egg' && { backgroundColor: '#F59E0B' },
+                                prod.type === 'nonveg' && { backgroundColor: '#EF4444' },
+                                { marginRight: 8 }
+                              ]}
+                            />
                             <View style={{ flex: 1, marginRight: 8 }}>
                               <Text style={styles.menuItemName}>{prod.name}</Text>
                               <Text style={styles.menuItemCategory}>{prod.category} | ₹{prod.price}</Text>
@@ -2809,6 +2827,32 @@ const styles = StyleSheet.create({
   },
   passwordToggleIcon: {
     padding: 4,
+  },
+  cardHeaderRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    paddingHorizontal: 8,
+    paddingTop: 8,
+    height: 24,
+  },
+  vegIndicatorDotMini: {
+    width: 8,
+    height: 8,
+    borderRadius: 4,
+  },
+  qtyBadgeMini: {
+    backgroundColor: '#10B981',
+    width: 18,
+    height: 18,
+    borderRadius: 9,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  qtyBadgeTextMini: {
+    color: '#FFFFFF',
+    fontSize: 10,
+    fontWeight: 'bold',
   },
   phoneInputWrapper: {
     flexDirection: 'row',
