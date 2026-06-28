@@ -32,12 +32,14 @@ create table public.orders (
     grand_total numeric(10, 2) not null,
     payment_mode text not null check (payment_mode in ('CASH', 'CARD', 'UPI')),
     customer_phone text,
+    user_id uuid references auth.users(id) on delete set null default auth.uid(),
     created_at timestamp with time zone default timezone('utc'::text, now()) not null
 );
 
 -- Index for statistics queries grouped by created_at and payment_mode
 create index idx_orders_created_at on public.orders(created_at);
 create index idx_orders_payment_mode on public.orders(payment_mode);
+create index idx_orders_user_id on public.orders(user_id);
 
 -- 3. ORDER ITEMS TABLE (Snapshotting item details for invoice integrity)
 create table public.order_items (
@@ -81,19 +83,29 @@ to authenticated
 using (true) 
 with check (true);
 
--- Orders Policies: Authenticated operators can do CRUD
+-- Orders Policies: Authenticated operators can do CRUD on their own orders or legacy orders (where user_id is null)
 create policy "Allow CRUD for authenticated users on orders" 
 on public.orders for all 
 to authenticated 
-using (true) 
-with check (true);
+using (auth.uid() = user_id or user_id is null) 
+with check (auth.uid() = user_id or user_id is null);
 
--- Order Items Policies: Authenticated operators can do CRUD
+-- Order Items Policies: Authenticated operators can do CRUD on items belonging to orders they own
 create policy "Allow CRUD for authenticated users on order_items" 
 on public.order_items for all 
 to authenticated 
-using (true) 
-with check (true);
+using (
+  exists (
+    select 1 from public.orders o
+    where o.id = order_items.order_id
+  )
+)
+with check (
+  exists (
+    select 1 from public.orders o
+    where o.id = order_items.order_id
+  )
+);
 
 -- ==========================================
 -- TRANSACTIONAL RPC (Atomic Order Creation)
@@ -106,15 +118,20 @@ create or replace function public.create_order_with_items(
   p_grand_total numeric,
   p_payment_mode text,
   p_customer_phone text,
-  p_items jsonb
+  p_items jsonb,
+  p_user_id uuid default null
 ) returns uuid as $$
 declare
   v_order_id uuid;
   v_item jsonb;
+  v_user_id uuid;
 begin
+  -- Resolve user ID: if passed parameter is null, fallback to auth.uid()
+  v_user_id := coalesce(p_user_id, auth.uid());
+
   -- 1. Create target order entry
-  insert into public.orders (order_number, subtotal, tax_amount, grand_total, payment_mode, customer_phone)
-  values (p_order_number, p_subtotal, p_tax_amount, p_grand_total, p_payment_mode, p_customer_phone)
+  insert into public.orders (order_number, subtotal, tax_amount, grand_total, payment_mode, customer_phone, user_id)
+  values (p_order_number, p_subtotal, p_tax_amount, p_grand_total, p_payment_mode, p_customer_phone, v_user_id)
   returning id into v_order_id;
 
   -- 2. Loop through JSON items array and insert order lines

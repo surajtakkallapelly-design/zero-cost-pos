@@ -148,7 +148,7 @@ export default function App() {
       <StatusBar style="dark" backgroundColor="#ffffff" />
       <SafeAreaView style={styles.appContainer} edges={['top', 'left', 'right']}>
         <View style={styles.contentArea}>
-          {activeTab === 'billing' && <BillingTab />}
+          {activeTab === 'billing' && <BillingTab session={session} />}
           {activeTab === 'transactions' && <TransactionsTab session={session} />}
           {activeTab === 'stats' && <StatsTab session={session} />}
           {activeTab === 'profile' && <ProfileTab session={session} onLogout={handleLogout} />}
@@ -255,7 +255,6 @@ function LoginView({ onBypass }) {
           <Ionicons name="calculator-outline" size={72} color="#2563EB" style={styles.loginLogo} />
           <Text style={styles.loginTitle}>PAPERLESS POS</Text>
           <Text style={styles.loginSubtitle}>Zero-overhead, free digital billing terminal</Text>
-          <Text style={styles.loginAuthor}>Created by Suraj Takkallapelly</Text>
 
           <View style={styles.inputGroup}>
             {/* Email Input */}
@@ -334,7 +333,7 @@ function LoginView({ onBypass }) {
 // ==========================================
 // 2. POS CART & CHECKOUT TAB
 // ==========================================
-function BillingTab() {
+function BillingTab({ session }) {
   const [cart, setCart] = useState([]);
   const [showCustomModal, setShowCustomModal] = useState(false);
   const [customName, setCustomName] = useState('');
@@ -745,6 +744,7 @@ function BillingTab() {
         p_payment_mode: selectedPaymentMode,
         p_customer_phone: wantsReceipt ? customerPhone : null,
         p_items: itemsData,
+        p_user_id: session?.user?.id || null,
       });
 
       if (error) throw error;
@@ -1672,10 +1672,15 @@ function TransactionsTab({ session }) {
   const loadTransactions = async () => {
     setLoading(true);
     try {
-      const { data, error } = await supabase
+      let query = supabase
         .from('orders')
-        .select('*, order_items(*)')
-        .order('created_at', { ascending: false });
+        .select('*, order_items(*)');
+
+      if (session?.user?.id) {
+        query = query.eq('user_id', session.user.id);
+      }
+
+      const { data, error } = await query.order('created_at', { ascending: false });
       if (error) throw error;
       setOrders(data);
     } catch (err) {
@@ -2019,7 +2024,15 @@ function StatsTab({ session }) {
 
   const loadStats = async () => {
     try {
-      const { data, error } = await supabase.from('orders').select('grand_total, subtotal, tax_amount, payment_mode, created_at, order_number');
+      let query = supabase
+        .from('orders')
+        .select('grand_total, subtotal, tax_amount, payment_mode, created_at, order_number');
+
+      if (session?.user?.id) {
+        query = query.eq('user_id', session.user.id);
+      }
+
+      const { data, error } = await query;
       if (error) throw error;
 
       const allOrders = data || [];
@@ -2760,13 +2773,6 @@ const styles = StyleSheet.create({
     color: '#475569',
     textAlign: 'center',
     marginTop: 8,
-    marginBottom: 4,
-  },
-  loginAuthor: {
-    fontSize: 12,
-    color: '#2563EB',
-    fontWeight: 'bold',
-    textAlign: 'center',
     marginBottom: 24,
   },
   inputGroup: {
